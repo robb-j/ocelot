@@ -15,11 +15,19 @@ const readFile = promisify(fs.readFile)
     // Generate the image tag from the REGISTRY & VERSION files
     let registry = await readFile(path.join(__dirname, '..', 'REGISTRY'), 'utf8')
     let version = await readFile(path.join(__dirname, '..', 'VERSION'), 'utf8')
-    let tag = `${registry.trim()}:${version.trim()}`
+    
+    // Generate tags for the image
+    let tags = [ `${registry.trim()}:${version.trim()}` ]
+    if (process.argv.includes('latest')) {
+      tags.push(`${registry.trim()}:latest`)
+    }
+    
+    // Reduce the tags into a statement
+    let tagsStmt = tags.reduce((stmt, tag) => `${stmt}-t ${tag} `, '').trim()
     
     // Generate the command to run
-    let cmd = `docker build -t ${tag} . && docker push ${tag}`
-    console.log('Running', cmd)
+    let cmd = `docker build ${tagsStmt} . && docker push ${tags[0]}`
+    console.log('Running:', cmd)
     
     // Run the command
     if (!process.argv.includes('dry')) {
