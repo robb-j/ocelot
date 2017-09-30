@@ -13,8 +13,8 @@ const readFile = promisify(fs.readFile)
   try {
     
     // Generate the image tag from the REGISTRY & VERSION files
-    let registry = await readFile(path.join(__dirname, '..', '..', 'REGISTRY'), 'utf8')
-    let version = await readFile(path.join(__dirname, '..', '..', 'VERSION'), 'utf8')
+    let registry = await readFile(path.join(__dirname, '..', 'REGISTRY'), 'utf8')
+    let version = await readFile(path.join(__dirname, '..', 'VERSION'), 'utf8')
     let tag = `${registry.trim()}:${version.trim()}`
     
     // Generate the command to run
@@ -22,9 +22,11 @@ const readFile = promisify(fs.readFile)
     console.log('Running', cmd)
     
     // Run the command
-    let proc = exec(cmd)
-    proc.stdout.pipe(process.stdout)
-    proc.stderr.pipe(process.stderr)
+    if (!process.argv.includes('dry')) {
+      let proc = exec(cmd)
+      proc.stdout.pipe(process.stdout)
+      proc.stderr.pipe(process.stderr)
+    }
   }
   catch (error) {
     console.log(`Error: ${error.message}`)
