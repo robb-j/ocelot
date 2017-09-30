@@ -7,14 +7,12 @@
     "build": "node tools/buildAndPush.js",
     "coverage": "node_modules/.bin/nyc --reporter=html node_modules/.bin/mocha test/unit",
     "coverage-summary": "node_modules/.bin/nyc --reporter=text-summary node_modules/.bin/mocha test/unit",
-    "start": "node web",
+    "start": "node_modules/.bin/nodemon web --watch web",
     "test": "./node_modules/mocha/bin/mocha test/unit"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.8.0",
@@ -24,6 +22,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^3.5.3",
+    "nodemon": "^1.12.1",
     "nyc": "^11.2.1"
   }
 }
