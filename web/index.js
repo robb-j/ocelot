@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 
 const winston = require('winston')
 const Gitlab = require('gitlab')
@@ -7,6 +8,32 @@ const Yaml = require('node-yaml')
 const Manager = require('./Manager')
 const { EmailClient } = require('./email')
 
+const { promisify } = require('util')
+const readFile = promisify(fs.readFile)
+
+
+const config = {
+  usersKey: process.env.USERS_KEY || 'DOKKU_USERS',
+  adminEmail: process.env.ADMIN_EMAIL,
+  livePeriod: process.env.LIVE_PERIOD || 90,
+  warnPeriod: process.env.WARN_PERIOD || 5,
+  state: {
+    repo: process.env.STATE_REPO,
+    path: process.env.STATE_PATH
+  },
+  docker: {
+    socket: process.env.DOCKER_SOCKET || '/var/run/docker.sock'
+  },
+  gitlab: {
+    url: process.env.GITLAB_URL,
+    token: process.env.GITLAB_TOKEN
+  },
+  smtp: {
+    host: process.env.SMTP_HOST,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
+}
 
 
 ;(async () => {
@@ -17,15 +44,24 @@ const { EmailClient } = require('./email')
     winston.add(winston.transports.File, { filename: 'logs/app.log' })
     
     
+    try {
+      let rawSecrets = await readFile(path.join(__dirname, 'secrets.yml'), 'utf8')
+      Object.assign(config, Yaml.parse(rawSecrets))
+    }
+    catch (error) { }
     
     
-    // let docker = connectToDocker()
-    // let gitlab = connectoToGitlab()
-    //
-    //
-    // let state = await fetchState(gitlab)
-    // let users = await fetchUsers(gitlab)
-    //
+    
+    // let docker = connectToDocker(config.docker)
+    let gitlab = connectoToGitlab(config.gitlab)
+    
+    
+    let state = await fetchState(gitlab)
+    let users = await fetchUsers(gitlab)
+    
+    console.log(state)
+    console.log(Object.keys(users).length + ' Users')
+    
     // let manager = new Manager(docker, gitlab, state, users, config)
     //
     //
@@ -72,8 +108,9 @@ function connectoToGitlab(config) {
   })
 }
 
-function connectToDocker() {
-  const socketPath = process.env.DOCKER_SOCKET || '/var/run/docker.sock'
+function connectToDocker(config) {
+  
+  const socketPath = config.socket
   
   // Check we have access to docker
   if (!fs.statSync(socketPath).isSocket()) {
@@ -99,19 +136,17 @@ async function fetchState(gitlab) {
   
   let file = await new Promise(resolve => {
     gitlab.projects.repository.showFile({
-      projectId: configRepo,
+      projectId: config.state.repo,
       ref: 'master',
-      file_path: configPath
+      file_path: config.state.path
     }, resolve)
   })
   
-  // let buffer = new Buffer(file.content, 'base64')
+  
   let buffer = Buffer.from(file.content, 'base64')
   
   let data = Yaml.parse(buffer.toString())
-  
   data.whitelist = data.whitelist || []
-  data.warned = data.warned || {}
   
   return data
 }
@@ -119,31 +154,24 @@ async function fetchState(gitlab) {
 async function warnContainer(container) {
   
   // Get the users var set on the container
-  let emails = emailsFromContainer(container)
-  
-  
-  let name = container.Name.split('.')[0]
-    .replace(/\//g, '')
-  
-  let title = `Dokku App Expiry – ${name}`
-  let body = `
-  You are recieving this email because your dokku app '${name} is expiring.
-  If you would like to keep you app online you can push your app again or you can contact us at ${adminEmail} about extending your app.
-  
-  Our new policy with dokku is that apps will be turned off after ${appLife} days, this is so we can provide a better service by removing apps that aren't used.
-  
-  Thanks,
-  The Openlab Support Team
-  `
-  
-  sendEmail(emails, title, body)
-  
-  
-}
-
-
-
-
-function getContainersToRemove(containers) {
-  return containers
+  // let emails = emailsFromContainer(container)
+  //
+  //
+  // let name = container.Name.split('.')[0]
+  //   .replace(/\//g, '')
+  //
+  // let title = `Dokku App Expiry – ${name}`
+  // let body = `
+  // You are recieving this email because your dokku app '${name} is expiring.
+  // If you would like to keep you app online you can push your app again or you can contact us at ${adminEmail} about extending your app.
+  //
+  // Our new policy with dokku is that apps will be turned off after ${appLife} days, this is so we can provide a better service by removing apps that aren't used.
+  //
+  // Thanks,
+  // The Openlab Support Team
+  // `
+  //
+  // sendEmail(emails, title, body)
+  //
+  //
 }
