@@ -1,0 +1,186 @@
+[
+  {
+    "name": "Otter Todooos",
+    "version": "0.0.1",
+    "base": "/api",
+    "template": "my-template-on-npm",
+    "filepath": "api/0.0.1/endpoints.yml",
+    "filedir": "api/0.0.1",
+    "groups": [
+      {
+        "id": "misc",
+        "name": "Miscellaneous",
+        "base": "/api/",
+        "endpoints": [
+          {
+            "id": "misc.helloWorld",
+            "methods": [
+              "get",
+              "post"
+            ],
+            "url": "/api/",
+            "params": [],
+            "body": [],
+            "responses": []
+          }
+        ]
+      },
+      {
+        "id": "lists",
+        "name": "Lists",
+        "base": "/api/list",
+        "endpoints": [
+          {
+            "id": "lists.index",
+            "methods": [
+              "get"
+            ],
+            "url": "/api/list/",
+            "params": [],
+            "body": [],
+            "responses": [
+              {
+                "name": "Success",
+                "status": 200,
+                "body": {}
+              }
+            ]
+          },
+          {
+            "id": "lists.create",
+            "methods": [
+              "post"
+            ],
+            "url": "/api/list/",
+            "params": [],
+            "body": [
+              {
+                "name": "name",
+                "optional": true,
+                "info": "string",
+                "type": "The name of the new list"
+              }
+            ],
+            "responses": [
+              {
+                "name": "Success",
+                "status": 200,
+                "body": {
+                  "meta": {
+                    "success": true,
+                    "messages": []
+                  },
+                  "data": []
+                }
+              }
+            ]
+          },
+          {
+            "id": "lists.todoCreate",
+            "methods": [
+              "post"
+            ],
+            "url": "/api/list/:id/add",
+            "params": [
+              {
+                "name": "id",
+                "optional": false,
+                "info": "string",
+                "type": "The id of the list to add to"
+              }
+            ],
+            "body": [
+              {
+                "name": "name",
+                "optional": true,
+                "info": "string",
+                "type": "The name of the new todo"
+              }
+            ],
+            "responses": [
+              {
+                "name": "Success",
+                "status": 200,
+                "body": {
+                  "meta": {
+                    "success": true,
+                    "messages": []
+                  },
+                  "data": []
+                }
+              },
+              {
+                "name": "List Not Found",
+                "status": 404,
+                "body": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "todos",
+        "name": "Todos",
+        "base": "/api/todo",
+        "endpoints": [
+          {
+            "id": "todos.complete",
+            "methods": [
+              "post"
+            ],
+            "url": "/api/todo/:id/complete",
+            "params": [
+              {
+                "name": "id",
+                "optional": false,
+                "info": "string",
+                "type": "The id of the todo to complete"
+              }
+            ],
+            "body": [],
+            "responses": [
+              {
+                "name": "Success",
+                "status": 200,
+                "body": {}
+              },
+              {
+                "name": "Todo Not Found",
+                "status": 404,
+                "body": {}
+              }
+            ]
+          },
+          {
+            "id": "todos.uncomplete",
+            "methods": [
+              "post"
+            ],
+            "url": "/api/todo/:id/uncomplete",
+            "params": [
+              {
+                "name": "id",
+                "optional": false,
+                "info": "string",
+                "type": "The id of the todo to uncomplete"
+              }
+            ],
+            "body": [],
+            "responses": [
+              {
+                "name": "Success",
+                "status": 200,
+                "body": {}
+              },
+              {
+                "name": "Todo Not Found",
+                "status": 404,
+                "body": {}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
