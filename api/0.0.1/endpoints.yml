@@ -38,7 +38,7 @@ lists:
     name: List Create
     info: Creates a new list
     body:
-      [name]: string - The name of the new list
+      name?: string - The name of the new list
     responses:
     - name: Success
       status: 200
@@ -49,9 +49,9 @@ lists:
     method: post
     name: Add Todo
     params:
-      id: The id of the list to add to
+      id: string - The id of the list to add to
     body:
-      [name]: The name of the new todo
+      name?: string - The name of the new todo
     responses:
     - name: Success
       status: 200
@@ -70,7 +70,7 @@ todos:
     name: Complete Todo
     info: Marks a todo as completed
     params:
-      id: The id of the todo to complete
+      id: string - The id of the todo to complete
     responses:
     - name: Success
       status: 200
@@ -85,7 +85,7 @@ todos:
     name: Uncomplete Todo
     info: Marks a todo as not completed
     params:
-      id: The id of the todo to uncomplete
+      id: string - The id of the todo to uncomplete
     responses:
     - name: Success
       status: 200
