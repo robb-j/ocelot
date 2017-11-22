@@ -1,0 +1,6 @@
+html
+  head
+    title Rendering Error 
+  body
+    h1 #{error.code || 'Pug Error'}
+    pre.stack #{error.stack}

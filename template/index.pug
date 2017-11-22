@@ -5,11 +5,9 @@ html
   body
     include nav.pug
     
-    h1 Hello, #{name}
+    section.section
+      .container
+        h1.title Hello, #{spec.name}!
+        p.subtitle #{spec.versions.length} version#{spec.versions.length > 1 ? 's' : ''}
     
-    include footer.pug
-    
-    hr
-    
-    pre
-      = JSON.stringify(spec, null, 2)
+    include foot.pug
