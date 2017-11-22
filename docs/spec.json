@@ -19,9 +19,18 @@
               "post"
             ],
             "url": "/api/",
+            "info": "An endpoint to let you know everything is working",
             "params": [],
             "body": [],
-            "responses": []
+            "responses": [],
+            "query": [
+              {
+                "name": "a",
+                "optional": true,
+                "info": "something",
+                "type": "string"
+              }
+            ]
           }
         ]
       },
@@ -36,6 +45,7 @@
               "get"
             ],
             "url": "/api/list/",
+            "info": "",
             "params": [],
             "body": [],
             "responses": [
@@ -44,7 +54,8 @@
                 "status": 200,
                 "body": {}
               }
-            ]
+            ],
+            "query": []
           },
           {
             "id": "lists.create",
@@ -52,13 +63,14 @@
               "post"
             ],
             "url": "/api/list/",
+            "info": "Creates a new list",
             "params": [],
             "body": [
               {
                 "name": "name",
                 "optional": true,
-                "info": "string",
-                "type": "The name of the new list"
+                "info": "The name of the new list",
+                "type": "string"
               }
             ],
             "responses": [
@@ -73,7 +85,8 @@
                   "data": []
                 }
               }
-            ]
+            ],
+            "query": []
           },
           {
             "id": "lists.todoCreate",
@@ -81,20 +94,21 @@
               "post"
             ],
             "url": "/api/list/:id/add",
+            "info": "",
             "params": [
               {
                 "name": "id",
                 "optional": false,
-                "info": "string",
-                "type": "The id of the list to add to"
+                "info": "The id of the list to add to",
+                "type": "string"
               }
             ],
             "body": [
               {
                 "name": "name",
                 "optional": true,
-                "info": "string",
-                "type": "The name of the new todo"
+                "info": "The name of the new todo",
+                "type": "string"
               }
             ],
             "responses": [
@@ -114,7 +128,8 @@
                 "status": 404,
                 "body": {}
               }
-            ]
+            ],
+            "query": []
           }
         ]
       },
@@ -129,12 +144,13 @@
               "post"
             ],
             "url": "/api/todo/:id/complete",
+            "info": "Marks a todo as completed",
             "params": [
               {
                 "name": "id",
                 "optional": false,
-                "info": "string",
-                "type": "The id of the todo to complete"
+                "info": "The id of the todo to complete",
+                "type": "string"
               }
             ],
             "body": [],
@@ -149,7 +165,8 @@
                 "status": 404,
                 "body": {}
               }
-            ]
+            ],
+            "query": []
           },
           {
             "id": "todos.uncomplete",
@@ -157,12 +174,13 @@
               "post"
             ],
             "url": "/api/todo/:id/uncomplete",
+            "info": "Marks a todo as not completed",
             "params": [
               {
                 "name": "id",
                 "optional": false,
-                "info": "string",
-                "type": "The id of the todo to uncomplete"
+                "info": "The id of the todo to uncomplete",
+                "type": "string"
               }
             ],
             "body": [],
@@ -177,7 +195,8 @@
                 "status": 404,
                 "body": {}
               }
-            ]
+            ],
+            "query": []
           }
         ]
       }

@@ -18,6 +18,8 @@ misc:
     url: /
     name: Hello, World
     info: An endpoint to let you know everything is working
+    query:
+      a?: string - something
 
 lists:
   base: /list
