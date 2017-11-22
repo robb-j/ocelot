@@ -1,0 +1,205 @@
+<!DOCTYPE html><html><head><title> Doc</title></head><body><header><p>The Header</p></header><h1>Hello, </h1><footer><p>The footer</p></footer><hr><pre>[
+  {
+    &quot;name&quot;: &quot;Otter Todooos&quot;,
+    &quot;version&quot;: &quot;0.0.1&quot;,
+    &quot;base&quot;: &quot;/api&quot;,
+    &quot;template&quot;: &quot;my-template-on-npm&quot;,
+    &quot;filepath&quot;: &quot;api/0.0.1/endpoints.yml&quot;,
+    &quot;filedir&quot;: &quot;api/0.0.1&quot;,
+    &quot;groups&quot;: [
+      {
+        &quot;id&quot;: &quot;misc&quot;,
+        &quot;name&quot;: &quot;Miscellaneous&quot;,
+        &quot;base&quot;: &quot;/api/&quot;,
+        &quot;endpoints&quot;: [
+          {
+            &quot;id&quot;: &quot;misc.helloWorld&quot;,
+            &quot;methods&quot;: [
+              &quot;get&quot;,
+              &quot;post&quot;
+            ],
+            &quot;url&quot;: &quot;/api/&quot;,
+            &quot;info&quot;: &quot;An endpoint to let you know everything is working&quot;,
+            &quot;params&quot;: [],
+            &quot;body&quot;: [],
+            &quot;responses&quot;: [],
+            &quot;query&quot;: [
+              {
+                &quot;name&quot;: &quot;a&quot;,
+                &quot;optional&quot;: true,
+                &quot;info&quot;: &quot;something&quot;,
+                &quot;type&quot;: &quot;string&quot;
+              }
+            ]
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;lists&quot;,
+        &quot;name&quot;: &quot;Lists&quot;,
+        &quot;base&quot;: &quot;/api/list&quot;,
+        &quot;endpoints&quot;: [
+          {
+            &quot;id&quot;: &quot;lists.index&quot;,
+            &quot;methods&quot;: [
+              &quot;get&quot;
+            ],
+            &quot;url&quot;: &quot;/api/list/&quot;,
+            &quot;info&quot;: &quot;&quot;,
+            &quot;params&quot;: [],
+            &quot;body&quot;: [],
+            &quot;responses&quot;: [
+              {
+                &quot;name&quot;: &quot;Success&quot;,
+                &quot;status&quot;: 200,
+                &quot;body&quot;: {}
+              }
+            ],
+            &quot;query&quot;: []
+          },
+          {
+            &quot;id&quot;: &quot;lists.create&quot;,
+            &quot;methods&quot;: [
+              &quot;post&quot;
+            ],
+            &quot;url&quot;: &quot;/api/list/&quot;,
+            &quot;info&quot;: &quot;Creates a new list&quot;,
+            &quot;params&quot;: [],
+            &quot;body&quot;: [
+              {
+                &quot;name&quot;: &quot;name&quot;,
+                &quot;optional&quot;: true,
+                &quot;info&quot;: &quot;The name of the new list&quot;,
+                &quot;type&quot;: &quot;string&quot;
+              }
+            ],
+            &quot;responses&quot;: [
+              {
+                &quot;name&quot;: &quot;Success&quot;,
+                &quot;status&quot;: 200,
+                &quot;body&quot;: {
+                  &quot;meta&quot;: {
+                    &quot;success&quot;: true,
+                    &quot;messages&quot;: []
+                  },
+                  &quot;data&quot;: []
+                }
+              }
+            ],
+            &quot;query&quot;: []
+          },
+          {
+            &quot;id&quot;: &quot;lists.todoCreate&quot;,
+            &quot;methods&quot;: [
+              &quot;post&quot;
+            ],
+            &quot;url&quot;: &quot;/api/list/:id/add&quot;,
+            &quot;info&quot;: &quot;&quot;,
+            &quot;params&quot;: [
+              {
+                &quot;name&quot;: &quot;id&quot;,
+                &quot;optional&quot;: false,
+                &quot;info&quot;: &quot;The id of the list to add to&quot;,
+                &quot;type&quot;: &quot;string&quot;
+              }
+            ],
+            &quot;body&quot;: [
+              {
+                &quot;name&quot;: &quot;name&quot;,
+                &quot;optional&quot;: true,
+                &quot;info&quot;: &quot;The name of the new todo&quot;,
+                &quot;type&quot;: &quot;string&quot;
+              }
+            ],
+            &quot;responses&quot;: [
+              {
+                &quot;name&quot;: &quot;Success&quot;,
+                &quot;status&quot;: 200,
+                &quot;body&quot;: {
+                  &quot;meta&quot;: {
+                    &quot;success&quot;: true,
+                    &quot;messages&quot;: []
+                  },
+                  &quot;data&quot;: []
+                }
+              },
+              {
+                &quot;name&quot;: &quot;List Not Found&quot;,
+                &quot;status&quot;: 404,
+                &quot;body&quot;: {}
+              }
+            ],
+            &quot;query&quot;: []
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;todos&quot;,
+        &quot;name&quot;: &quot;Todos&quot;,
+        &quot;base&quot;: &quot;/api/todo&quot;,
+        &quot;endpoints&quot;: [
+          {
+            &quot;id&quot;: &quot;todos.complete&quot;,
+            &quot;methods&quot;: [
+              &quot;post&quot;
+            ],
+            &quot;url&quot;: &quot;/api/todo/:id/complete&quot;,
+            &quot;info&quot;: &quot;Marks a todo as completed&quot;,
+            &quot;params&quot;: [
+              {
+                &quot;name&quot;: &quot;id&quot;,
+                &quot;optional&quot;: false,
+                &quot;info&quot;: &quot;The id of the todo to complete&quot;,
+                &quot;type&quot;: &quot;string&quot;
+              }
+            ],
+            &quot;body&quot;: [],
+            &quot;responses&quot;: [
+              {
+                &quot;name&quot;: &quot;Success&quot;,
+                &quot;status&quot;: 200,
+                &quot;body&quot;: {}
+              },
+              {
+                &quot;name&quot;: &quot;Todo Not Found&quot;,
+                &quot;status&quot;: 404,
+                &quot;body&quot;: {}
+              }
+            ],
+            &quot;query&quot;: []
+          },
+          {
+            &quot;id&quot;: &quot;todos.uncomplete&quot;,
+            &quot;methods&quot;: [
+              &quot;post&quot;
+            ],
+            &quot;url&quot;: &quot;/api/todo/:id/uncomplete&quot;,
+            &quot;info&quot;: &quot;Marks a todo as not completed&quot;,
+            &quot;params&quot;: [
+              {
+                &quot;name&quot;: &quot;id&quot;,
+                &quot;optional&quot;: false,
+                &quot;info&quot;: &quot;The id of the todo to uncomplete&quot;,
+                &quot;type&quot;: &quot;string&quot;
+              }
+            ],
+            &quot;body&quot;: [],
+            &quot;responses&quot;: [
+              {
+                &quot;name&quot;: &quot;Success&quot;,
+                &quot;status&quot;: 200,
+                &quot;body&quot;: {}
+              },
+              {
+                &quot;name&quot;: &quot;Todo Not Found&quot;,
+                &quot;status&quot;: 404,
+                &quot;body&quot;: {}
+              }
+            ],
+            &quot;query&quot;: []
+          }
+        ]
+      }
+    ]
+  }
+]</pre></body></html>

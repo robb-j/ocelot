@@ -1,0 +1,15 @@
+doctype html
+html
+  include head.pug
+  
+  body
+    include nav.pug
+    
+    h1 Hello, #{name}
+    
+    include footer.pug
+    
+    hr
+    
+    pre
+      = JSON.stringify(spec, null, 2)
