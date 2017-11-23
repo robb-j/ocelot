@@ -67,7 +67,8 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: \u001b[31merror while parsing tsconfig.json\u001b[39m");
+console.log('Whazzzzzupppp');
+
 
 /***/ })
 /******/ ]);
