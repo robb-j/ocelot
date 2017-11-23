@@ -1,13 +1,13 @@
 doctype html
 html
-  include head.pug
+  include includes/head.pug
   
   body
-    include nav.pug
+    include includes/nav.pug
     
     section.section
       .container
         h1.title Hello, #{spec.name}!
         p.subtitle #{spec.versions.length} version#{spec.versions.length > 1 ? 's' : ''}
     
-    include foot.pug
+    include includes/foot.pug

@@ -7,17 +7,22 @@
     "coverage": "node_modules/.bin/nyc --reporter=html node_modules/.bin/mocha test/unit",
     "coverage-summary": "node_modules/.bin/nyc --reporter=text-summary node_modules/.bin/mocha test/unit",
     "start": "node lib",
-    "test": "./node_modules/mocha/bin/mocha test/unit",
+    "test": "node_modules/mocha/bin/mocha test/unit",
+    "dev": "node_modules/.bin/webpack --config template/webpack.config.js",
     "watch": "node_modules/.bin/nodemon lib --watch lib"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ansi-regex": "^3.0.0",
     "commander": "^2.11.0",
     "express": "^4.16.2",
     "js-yaml": "^3.10.0",
     "opn": "^5.1.0",
-    "pug": "^2.0.0-rc.4"
+    "pug": "^2.0.0-rc.4",
+    "ts-loader": "^3.1.1",
+    "typescript": "^2.6.1",
+    "webpack": "^3.8.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
