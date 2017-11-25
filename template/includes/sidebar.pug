@@ -1,0 +1,11 @@
+//- Params: info, spec, version
+
+aside.overview
+  h2 Endpoints
+  input(type='search', placeholder='Search')
+  each group in version.groups
+    section.group(id='link-'+group.id)
+      h3 #{group.name}
+      ul.endpoint-list
+        each endpoint in group.endpoints
+          li.endpoint(id='link-'+endpoint.id) #{endpoint.name}

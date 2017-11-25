@@ -1,5 +1,4 @@
 ---
-name: Otter Todooos
 version: 0.0.1
 base: /api
 template: my-template-on-npm

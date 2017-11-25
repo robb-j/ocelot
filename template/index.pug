@@ -1,13 +1,11 @@
 doctype html
 html
-  include includes/head.pug
+  head
+    title #{spec.name}
+    link(rel='stylesheet', href='/css/styles.css')
+    script(type='text/javascript', src='/js/app.js')
   
   body
-    include includes/nav.pug
-    
-    section.section
-      .container
-        h1.title Hello, #{spec.name}!
-        p.subtitle #{spec.versions.length} version#{spec.versions.length > 1 ? 's' : ''}
-    
-    include includes/foot.pug
+    include includes/header
+    include includes/layout
+    include includes/footer
