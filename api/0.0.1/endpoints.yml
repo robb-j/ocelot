@@ -13,7 +13,7 @@ misc:
   name: Miscellaneous
   endpoints:
   - id: helloWorld
-    methods: get,post
+    method: get
     url: /
     name: Hello, World
     info: An endpoint to let you know everything is working

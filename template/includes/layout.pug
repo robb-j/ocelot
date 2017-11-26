@@ -1,7 +1,6 @@
+//- Params: info, spec
+
 each version,index in spec.versions
   .version(id=version.name)
-    .pure-g
-      .pure-u-6-24
-        include sidebar
-      .pure-u-18-24
-        include main
+    include sidebar
+    include main

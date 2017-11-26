@@ -1,2 +1,88 @@
-p
-  // color: red
+lightBg = #f5f7f9
+primary = #FF8767
+sidebarSize = 180px
+
+body
+  position relative
+  margin-top 3.5em
+  padding-bottom 3.4rem
+  min-height calc(100vh - 3.5em)
+  
+  p
+    font-family 'Lora', serif
+    margin 0 0 1em
+  
+  h1
+    font-family 'Noto Sans', sans-serif
+    margin 0.3em 0 0.3em
+  
+  h2,h3,h4,h5,h6
+    font-family 'Noto Sans', sans-serif
+    margin 0.3em 0 0.7em
+  
+  pre
+    font-family 'Space Mono', monospace
+    margin 0 0 1em
+    padding 1.2em
+    border-radius 1px
+    background lightBg
+    font-size 0.8em
+  
+  ul
+    margin: 0 0 1em;
+    padding: 0 0 0 1.5em;
+    li
+      margin-bottom 0.3em
+  
+  a
+    color primary
+    text-decoration none
+    margin -0.1em -0.15em
+    padding 0.1em 0.15em
+    border-radius 0.15em
+    transition 0.3s color, 0.3s background
+    &:hover
+      color white
+      background primary
+  
+  header
+    position fixed
+    top 0
+    left 0
+    right 0
+    z-index 1
+    background primary
+    border-bottom 1px solid darken(primary, 10%)
+    padding 0.7rem
+    font-size 1.7em
+    .title
+      color white
+      font-family 'Lora', serif
+      text-shadow 2px 1px darken(primary, 20%)
+  
+  .version
+    position: relative
+    aside
+      position absolute
+      left 0; top 0; bottom 0
+      width sidebarSize
+      background #f8f8f8
+      border-right 1px solid alpha(primary, 0.05)
+      border-bottom 1px solid alpha(primary, 0.05)
+      padding 0 0.7rem
+      box-sizing border-box
+    main
+      margin-left sidebarSize
+      padding 0 0.7rem
+  
+  footer
+    position absolute
+    left 0; right 0; bottom 0
+    margin 0.5rem 0 0
+    font-size 0.9rem
+    padding  1rem
+    text-align center
+    border-top 1px solid #e8e8e8
+    color #889
+    background lightBg
+    

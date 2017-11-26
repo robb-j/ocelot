@@ -13,7 +13,7 @@ main
         each endpoint in group.endpoints
           article(id=endpoint.id)
             pre
-              span #{endpoint.methods.join(',')} 
+              span #{endpoint.method} 
               span :
               span #{endpoint.url}
               span  &ndash; 
