@@ -6,7 +6,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/app.ts'),
+  entry: path.resolve(__dirname, 'src/app.js'),
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'assets/js')
@@ -32,11 +32,15 @@ module.exports = {
           fallback: 'style-loader',
           use: 'css-loader!stylus-loader'
         })
+      },
+      {
+        test: /.vue$/,
+        loader: 'vue-loader'
       }
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js', '.styl' ]
+    extensions: [ '.tsx', '.ts', '.js', '.styl', '.vue' ]
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),

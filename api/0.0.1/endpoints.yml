@@ -28,6 +28,7 @@ lists:
     url: /
     method: get
     name: List Index
+    info: Returns all lists
     responses:
     - name: Success
       status: 200
@@ -49,6 +50,7 @@ lists:
     url: /:id/add
     method: post
     name: Add Todo
+    info: Creates a new todo and adds it to a list
     params:
       id: string - The id of the list to add to
     body:

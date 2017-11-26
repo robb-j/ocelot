@@ -14,7 +14,161 @@ Copyright 2013 Yahoo!
 Licensed under the BSD License.
 https://github.com/yahoo/pure/blob/master/LICENSE.md
 */
-.pure-g{letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){table .pure-g{display:block}}.opera-only :-o-prefocus,.pure-g{word-spacing:-.43em}.pure-u,.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-g [class*=pure-u]{font-family:sans-serif}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}body {
+.pure-g{letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){table .pure-g{display:block}}.opera-only :-o-prefocus,.pure-g{word-spacing:-.43em}.pure-u,.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-g [class*=pure-u]{font-family:sans-serif}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}aside.overview {
+  background: #f5f7f9;
+  border-right: 1px solid rgba(255,135,103,0.05);
+  border-bottom: 1px solid rgba(255,135,103,0.05);
+}
+aside.overview h2 {
+  text-align: center;
+}
+aside.overview .group h4 {
+  margin-bottom: 0.3em;
+}
+aside.overview .group ul.endpoint-list li:hover {
+  cursor: pointer;
+}
+main section.group h2 {
+  margin: 1.5em 0 0.3em;
+}
+main section.group article.endpoint {
+  margin-left: 1em;
+}
+main section.group article.endpoint h3 {
+  margin: 0 0 0.3em;
+  font-size: 1em;
+}
+main section.group article.endpoint h3 .method,
+main section.group article.endpoint h3 .url {
+  margin: 0em -titleSize 0em 0;
+  padding: 0em 0.3em;
+}
+main section.group article.endpoint h3 .method {
+  border: 1px solid transparent;
+  border-radius: 0.3em 0em 0 0.3em;
+  margin-right: 0em;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  min-width: 42px;
+  display: inline-block;
+  text-align: center;
+}
+main section.group article.endpoint h3 .method.get {
+  background: #26c65d;
+  color: #fff;
+  border-color: #22b254;
+}
+main section.group article.endpoint h3 .method.post {
+  background: #6ae;
+  color: #fff;
+  border-color: #4799eb;
+}
+main section.group article.endpoint h3 .url {
+  font-family: 'Space Mono', monospace;
+  color: #334;
+  background: #fafafa;
+  border: 1px solid #e1e1e1;
+  border-radius: 0 0.3em 0.3em 0;
+  padding-right: 0.6em;
+  border-left: none;
+}
+main section.group article.endpoint h3 .name {
+  float: right;
+  font-size: 1.2em;
+}
+main section.group article.endpoint .details {
+  border-left: 4px solid #ff8767;
+  padding: 0 0.6em;
+  margin-left: 0.3em;
+  margin-bottom: 3em;
+}
+main section.group article.endpoint .details .info {
+  margin-bottom: 1.5em;
+  width: 75%;
+}
+main section.group article.endpoint .details .tabnav button {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 0 0.3em 0;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  font-style: italic;
+  color: #999;
+}
+main section.group article.endpoint .details .tabnav button:focus {
+  outline: none;
+  text-decoration: underline;
+}
+main section.group article.endpoint .details .tabnav button.active {
+  color: #000;
+  font-style: normal;
+}
+main section.group article.endpoint .details .tabnav button:not(:last-child) {
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  border-right: 1px solid #334;
+}
+.args-table {
+  margin-bottom: 2em;
+}
+.args-table h4 {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+.args-table table {
+  width: 100%;
+  margin-left: 1em;
+}
+.args-table table th,
+.args-table table td {
+  padding: 0.3em;
+  border: 1px solid #ddd;
+  font-family: 'Lora', serif;
+}
+.args-table table th.name,
+.args-table table td.name {
+  text-align: right;
+}
+.args-table table th.type,
+.args-table table td.type {
+  text-align: center;
+}
+.args-table table th.info,
+.args-table table td.info {
+  text-align: left;
+}
+.args-table table thead tr th {
+  border-top: none;
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  color: #334;
+  font-style: italic;
+  text-transform: lowercase;
+}
+.args-table table tbody tr:last-child td {
+  border-bottom: none;
+}
+.args-table table thead tr th:first-child,
+.args-table table tbody tr td:first-child {
+  border-left: none;
+}
+.args-table table thead tr th:last-child,
+.args-table table tbody tr td:last-child {
+  border-right: none;
+}
+.args-table table tbody td.info .optional {
+  font-size: 0.9em;
+  padding: 0.1em 0.3em;
+  margin: -0.1em 0.4em -0.1em 0;
+  background: #bbb;
+  border-radius: 0.3em;
+  font-family: 'Noto Sans', sans-serif;
+  color: #fff;
+}
+body {
   position: relative;
   margin-top: 3.5em;
   padding-bottom: 3.4rem;
@@ -82,21 +236,21 @@ body header .title {
 body .version {
   position: relative;
 }
+body .version aside,
+body .version main {
+  box-sizing: border-box;
+  padding: 0 0.7rem;
+}
 body .version aside {
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 0;
+  top: 3.5em;
   bottom: 0;
   width: 180px;
-  background: #f8f8f8;
-  border-right: 1px solid rgba(255,135,103,0.05);
-  border-bottom: 1px solid rgba(255,135,103,0.05);
-  padding: 0 0.7rem;
-  box-sizing: border-box;
 }
 body .version main {
   margin-left: 180px;
-  padding: 0 0.7rem;
+  max-width: 620px;
 }
 body footer {
   position: absolute;

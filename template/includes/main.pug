@@ -11,10 +11,4 @@ main
       h2 #{group.name}
       .endpoint-list
         each endpoint in group.endpoints
-          article(id=endpoint.id)
-            pre
-              span #{endpoint.method} 
-              span :
-              span #{endpoint.url}
-              span  &ndash; 
-              span #{endpoint.name}
+          include endpoint

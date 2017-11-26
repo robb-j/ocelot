@@ -1,0 +1,83 @@
+getColour = #26C65D
+postColour = #66AAEE
+
+titleSize = 0.3em
+
+main
+  section.group
+    h2
+      margin 1.5em 0 0.3em
+    
+    article.endpoint
+      margin-left 1em
+      h3
+        margin 0 0 0.3em
+        font-size 1em
+        
+        .method, .url
+          margin 0em -titleSize 0em 0
+          padding 0em titleSize
+        
+        .method
+          border 1px solid transparent
+          border-radius titleSize 0em 0 titleSize
+          margin-right 0em
+          font-family spaceMono
+          text-transform uppercase
+          min-width 42px
+          display inline-block
+          text-align center
+          
+          &.get
+            background getColour
+            color white
+            border-color darken(getColour, 10%)
+          &.post
+            background postColour
+            color white
+            border-color darken(postColour, 10%)
+        
+        .url
+          font-family spaceMono
+          color #334
+          background #fafafa
+          border 1px solid darken(#fafafa, 10%)
+          border-radius 0 titleSize titleSize 0
+          padding-right 2 * titleSize
+          border-left none
+        
+        .name
+          float right
+          font-size 1.2em
+      
+      .details
+        border-left 4px solid primary
+        padding 0 0.6em
+        margin-left 0.3em
+        margin-bottom 3em
+        
+        .info
+          margin-bottom 1.5em
+          width 75%
+        
+        .tabnav button
+          background none
+          border none
+          border-radius 0
+          padding 0
+          margin 0 0 0.3em 0
+          font-family notoSans
+          font-size 1em
+          font-weight 700
+          font-style italic
+          color #999
+          &:focus
+            outline none
+            text-decoration underline;
+          &.active
+            color black
+            font-style normal
+          &:not(:last-child)
+            padding-right 0.5em
+            margin-right 0.5em
+            border-right 1px solid #334

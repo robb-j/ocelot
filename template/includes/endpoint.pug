@@ -1,0 +1,26 @@
+//- Params: info, spec, version, endpoint
+
+article.endpoint(id=endpoint.id)
+  h3
+    span.method(class=endpoint.method) #{endpoint.method}
+    span.url #{endpoint.url}
+    span.name #{endpoint.name}
+  .details
+    p.info #{endpoint.info || 'No info provided'}
+    //- pre #{JSON.stringify(endpoint, null, 2)}
+    tabset.arguements
+      if endpoint.params.length > 0
+        tab(name='Params')
+          +args-table('Param', 'passed in the url', endpoint.params)
+      if endpoint.query.length > 0
+        tab(name='Query')
+          +args-table('Query', 'passed as GET parameters', endpoint.query)
+      if endpoint.body.length > 0
+        tab(name='Body')
+          +args-table('Body', 'passed in the request body', endpoint.body)
+    
+    if endpoint.responses.length > 0
+      tabset.responses
+        each response in endpoint.responses
+          tab(name=`${response.name} (${response.status})`)
+            pre #{JSON.stringify(response.body, null, 2)}

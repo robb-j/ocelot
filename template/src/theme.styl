@@ -1,6 +1,8 @@
-lightBg = #f5f7f9
-primary = #FF8767
-sidebarSize = 180px
+@import 'styles/vars'
+@import 'styles/mixins'
+@import 'styles/sidebar'
+@import 'styles/version'
+@import 'styles/args-table'
 
 body
   position relative
@@ -62,18 +64,18 @@ body
   
   .version
     position: relative
-    aside
-      position absolute
-      left 0; top 0; bottom 0
-      width sidebarSize
-      background #f8f8f8
-      border-right 1px solid alpha(primary, 0.05)
-      border-bottom 1px solid alpha(primary, 0.05)
-      padding 0 0.7rem
+    aside,main
       box-sizing border-box
+      padding 0 0.7rem
+    aside
+      position fixed
+      left 0
+      top 3.5em
+      bottom 0
+      width sidebarSize
     main
       margin-left sidebarSize
-      padding 0 0.7rem
+      max-width 620px
   
   footer
     position absolute
