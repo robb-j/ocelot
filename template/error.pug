@@ -1,9 +1,0 @@
-html
-  head
-    title Rendering Error 
-  body
-    h1 There was #{errors.length} problem#{errors.length > 0 ? 's' : ''}
-    
-    each error in errors
-      h2 #{error.code || error.name || 'Pug Error'}
-      pre.stack #{error.stack}

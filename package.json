@@ -1,40 +1,30 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "",
+  "name": "ocelot-docs",
+  "version": "0.0.1",
+  "description": "Api docs generators using yaml",
   "main": "index.js",
   "scripts": {
-    "coverage": "node_modules/.bin/nyc --reporter=html node_modules/.bin/mocha test/unit",
-    "coverage-summary": "node_modules/.bin/nyc --reporter=text-summary node_modules/.bin/mocha test/unit",
     "start": "node lib",
-    "test": "node_modules/mocha/bin/mocha test/unit",
-    "dev": "node_modules/.bin/webpack --config template/webpack.config.js",
-    "watch": "node_modules/.bin/nodemon lib --watch lib"
+    "watch": "node lib -w"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robb-j/ocelot.git"
+  },
+  "author": "robb-j",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robb-j/ocelot/issues"
+  },
+  "homepage": "https://github.com/robb-j/ocelot#readme",
   "dependencies": {
-    "@types/vue": "^2.0.0",
     "ansi-regex": "^3.0.0",
     "commander": "^2.11.0",
-    "css-loader": "^0.28.7",
     "express": "^4.16.2",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "friendly-errors-webpack-plugin": "^1.6.1",
     "js-yaml": "^3.10.0",
+    "ocelot-template": "0.0.1",
     "opn": "^5.1.0",
-    "pug": "^2.0.0-rc.4",
-    "purecss": "^1.0.0",
-    "scroll-to-element": "^2.0.0",
-    "style-loader": "^0.19.0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
-    "ts-loader": "^3.1.1",
-    "typescript": "^2.6.1",
-    "vue": "^2.5.8",
-    "vue-loader": "^13.5.0",
-    "vue-template-compiler": "^2.5.8",
-    "webpack": "^3.8.1"
+    "pug": "^2.0.0-rc.4"
   },
   "devDependencies": {
     "chai": "^4.1.2",
