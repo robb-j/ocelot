@@ -21,7 +21,6 @@
     "ocedocs": "./lib/index.js"
   },
   "dependencies": {
-    "ansi-regex": "^3.0.0",
     "commander": "^2.11.0",
     "express": "^4.16.2",
     "js-yaml": "^3.10.0",
