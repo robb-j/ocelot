@@ -17,6 +17,9 @@
     "url": "https://github.com/robb-j/ocelot/issues"
   },
   "homepage": "https://github.com/robb-j/ocelot#readme",
+  "bin": {
+    "ocedocs": "./lib/index.js"
+  },
   "dependencies": {
     "ansi-regex": "^3.0.0",
     "commander": "^2.11.0",
