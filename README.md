@@ -15,7 +15,7 @@ wizards:
   - id: list
     method: get
     url: /wizards
-    info: Finds as many wizards, sorted by hat size
+    info: Finds all of the wizards, sorted by hat size
     
   - id: create
     method: post
@@ -26,7 +26,7 @@ wizards:
       hatSize?: number - How big to make his hat
 ```
 
-Docs are rendered to index.html in your output directory, or `docs` by default. If there are compilation errors they are rendered instead.
+Docs are rendered to index.html in your output directory, which is `docs` by default. If there are compilation errors they are rendered instead into that file.
 
 ## Using the CLI
 
@@ -51,11 +51,11 @@ node_modules/.bin/ocedocs -w
 
 ## Writing Docs
 
-Docs should be in their own directory, it defaults to `/api` but you can change it with `--input myDir`. Ocelot expects this folder to have an `info.yml` which contains information about your api. Namely it can have the `name`, `template` and `description` of your api. The `template` is optional and refers to an npm package defining the api template.
+Docs are written in their own directory, which defaults to `/api`. Ocelot expects this folder to have an `info.yml` which has information about your api. Namely it can have the `name`, `template` and `description` of your api. The `template` is optional and refers to an npm package defining the api template.
 
 ### info.yml
 
-``` yaml
+```yaml
 name: Wizards Api
 template: my-custom-npm-template
 description: >
@@ -68,9 +68,9 @@ After defining that, Ocelot will look for any directories inside your input fold
 
 #### endpoints.yml
 
-An endpoints file should contain 2 YAML documents, the first contains the version block defining information about this version of the API. The second contains the group definition which is the groups of endpoints.
+An endpoints file should contain 2 YAML docs, the first contains version info, details and structure of this version. The second doc contains the endpoint definitions, contained in their groups.
 
-``` yaml
+```yaml
 ---
 version: 0.0.1
 base: /
@@ -105,8 +105,8 @@ The groups block should be an object containing definitions for each of the grou
 
 | Field       | Info |
 | ----------- | ---- |
-| `base`      | **optional** – A base url for this group |
 | `name`      | The name of the group |
+| `base`      | **optional** – A base url for this group, relative to the version's base |
 | `endpoints` | The list of ***endpoint*** definitions |
 
 #### Endpoint Definition
@@ -114,8 +114,8 @@ The groups block should be an object containing definitions for each of the grou
 | Field       | Info |
 | ----------- | ---- |
 | `id`        | An identifier for the endpoint |
-| `method`    | The http method the endpoint uses |
-| `url`       | The url where the endpoint is, joined onto the group and version's `base` |
+| `method`    | The method to access the endpoint |
+| `url`       | The url to access the endpoint, relative to the group |
 | `name`      | The name of the endpoint |
 | `info`      | **optional** – A longer description of the endpoint |
 | `responses` | **optional** – A list of ***response*** definitions |
@@ -125,16 +125,16 @@ The groups block should be an object containing definitions for each of the grou
 
 #### Argument Definition
 
-An argument definition is a YAML object with definitions for a set of arguments. They key is the name of the arg and the value is a string definition containing the type, a dash `-` and the descriptions. If the key ends with a `?`, it marks it as optional.
+An argument definition is a YAML object with descriptions for a set of arguments. They key is the name of the argument and the value is a string definition containing the type, a dash (`-`) and the description. If the key ends with a `?`, it marks it as optional.
 
-``` yml
+```yaml
 name: string - The name of the wizard
 age?: number - An optional age of the wizard
 ```
 
 #### Response Definition
 
-``` yml
+```yaml
 - name: Success
   status: 200
   body: index/success.json
@@ -150,7 +150,7 @@ To look for the body it will look look in `data/` inside the version directory, 
 
 ## Custom templates
 
-A template is an npm package used to render an api definition using pug. The package should have a `template/` directory which should contain:
+A template is an npm package used to render an api definition using [pug](https://pugjs.org/). The package should have a `template/` directory which should contain:
 
 * `info.yml` – A file containing info about the template
 * `index.pug` – A pug template to render the api definition
@@ -158,11 +158,10 @@ A template is an npm package used to render an api definition using pug. The pac
 
 ### info.yml
 
-``` yaml
+```yaml
 name: Custom Template
 version: 0.1.2
 link: https://example.com
-webpack: webpack.config.js
 
 assets:
 - js
@@ -175,7 +174,6 @@ assets:
 | `name`    | The name of the template |
 | `version` | The version of the template |
 | `link`    | A link to the template's author |
-| `webpack` | **optional** – An optional webpack config file (inside `template`) used when watching the docs, using `-w` |
 | `assets`  | **optional** – A list of directories that will be copied into the compiled result |
 
 For more info, see the [default template](https://github.com/robb-j/ocelot-template).
