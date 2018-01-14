@@ -12,15 +12,11 @@ groups:
 wizards:
   name: Endpoints to manage those pesky wizards
   endpoints:
-  - id: list
-    method: get
-    url: /wizards
-    info: Finds all of the wizards, sorted by hat size
+  - get: /wizards list
+    info: Finds all of the wizards that are available, sorted by hat size
     
-  - id: create
-    method: post
-    url: /wizard
-    info: Gives birth to a new wizard with the passed parameters
+  - post: /wizard create
+    info: Gives birth to a new wizard setting their name and (optionally) hat size
     body:
       name: string - What to call the wizard
       hatSize?: number - How big to make his hat
@@ -108,7 +104,7 @@ The groups block should be an object containing definitions for each of the grou
 | `name`      | The name of the group |
 | `base`      | **optional** – A base url for this group, relative to the version's base |
 | `endpoints` | The list of ***endpoint*** definitions |
-
+<!--  -->
 #### Endpoint Definition
 
 | Field       | Info |
@@ -123,6 +119,17 @@ The groups block should be an object containing definitions for each of the grou
 | `query`     | **optional** – The query parameters e.g. `?key=val`, an ***argument*** definition |
 | `body`      | **optional** – The json body parameters, an ***argument*** definition |
 
+##### Endpoint Shorthand
+
+As seen at the top, you can use the endpoint shorthand which defines the method, url & id in one go. The equivalent of above would be:
+
+``` yaml
+endpoints:
+  - get: /list index
+    name: Fetch Wizards
+    info: Looks for all wizards and sorts them by hat size
+```
+
 #### Argument Definition
 
 An argument definition is a YAML object with descriptions for a set of arguments. They key is the name of the argument and the value is a string definition containing the type, a dash (`-`) and the description. If the key ends with a `?`, it marks it as optional.
@@ -135,15 +142,17 @@ age?: number - An optional age of the wizard
 #### Response Definition
 
 ```yaml
-- name: Success
-  status: 200
-  body: index/success.json
+- 200: Success index/success.json
 - name: Not Found
   status: 404
   body: index/notFound.json
 ```
 
-A response definition is an array of objects which describes potential responses that the endpoint can return. `status` is the http status code that the response comes with. `body` is a reference to a file which contains an example response body.
+A response definition is an array of objects which describes potential responses that the endpoint can return. The first definition is the shorthand and the second is the long form.
+
+* `name` is your name of this response
+* `status` is the http status code this response comes with
+* `body` is a reference to a file which contains the example body (a json file)
 
 To look for the body it will look look in `data/` inside the version directory, joining the path onto that.
 
