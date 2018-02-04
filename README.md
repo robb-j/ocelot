@@ -10,19 +10,23 @@ groups:
 ---
 
 wizards:
-  name: Endpoints to manage those pesky wizards
+  name: Management
   endpoints:
   - get: /wizards list
     info: Finds all of the wizards that are available, sorted by hat size
     
   - post: /wizard create
-    info: Gives birth to a new wizard setting their name and (optionally) hat size
+    info: Gives birth to a new wizard setting their name & (optionally) hat size
     body:
       name: string - What to call the wizard
       hatSize?: number - How big to make his hat
+    responses:
+    - 200: Success created.json
 ```
 
 Docs are rendered to index.html in your output directory, which is `docs` by default. If there are compilation errors they are rendered instead into that file.
+
+![Example Docs](assets/screenshot.png)
 
 ## Using the CLI
 
@@ -37,11 +41,11 @@ ocedocs --help
 # Install locally for dev
 npm i -D ocelot-docs
 
-# Run locally (i.e. from package.json scripts)
-node_modules/.bin/ocedocs --input api --output docs
+# Generate documentation
+ocedocs --input api --output docs
 
-# Watch the docs (creates an express server)
-node_modules/.bin/ocedocs -w
+# Watch the docs (uses an express server)
+ocedocs -w
 
 ```
 
@@ -185,4 +189,4 @@ assets:
 | `link`    | A link to the template's author |
 | `assets`  | **optional** – A list of directories that will be copied into the compiled result |
 
-For more info, see the [default template](https://github.com/robb-j/ocelot-template).
+For more info, see the [default template](https://github.com/robb-j/ocelot-template). There is also the `spec.json`, which is created along side your `index.html`, which is used to render the docs.
