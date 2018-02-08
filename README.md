@@ -4,8 +4,6 @@ Generate Api documentation using YAML
 
 ```yaml
 version: 0.4.2
-groups:
-  - wizards
 ---
 wizards:
   name: Management
@@ -49,7 +47,7 @@ npx ocedocs -w
 
 ## Writing Docs
 
-Docs are written in their own directory, which defaults to `/api`. If there isan `info.yml` Ocelot will use that to describe your api with a `name`, `template` and `description`. The `template` refers to an npm package defining the api template.
+Docs are written in their own directory, which defaults to `/api`. If there is an `info.yml` in there Ocelot will use that to describe your api with a `name`, `template` and `description`. The `template` refers to an npm package defining the api template.
 
 ### info.yml
 
@@ -57,49 +55,28 @@ Docs are written in their own directory, which defaults to `/api`. If there isan
 name: Wizards Api
 template: my-custom-npm-template
 description: >
-  A simple API for creating & managing pesky wizards
+  A simple API for creating & managing those pesky wizards
 ```
 
 ### Defining Endpoint Versions
 
-After that, Ocelot will look for any directories inside your input folder which contain an `endpoints.yml` file.
+Ocelot will look for any directories inside your input folder which contain an `endpoints.yml` file, these describe a version of your api. You can just have one endpoints.yml in your input folder if you want.
 
 #### endpoints.yml
 
-An endpoints file is the description of a version of your api, the top level objects are groups of your endpoints.
+This describes of a version of your api, the top level objects are groups of your endpoints.
 
 ```yaml
 wizards:
   base: /wzrd
   name: Wizards
   endpoints:
-  - get: index
+  - id: index
     method: get
     url: /list
     name: Fetch Wizards
     info: Looks for all wizards and sorts them by hat size
 ```
-
-You can optionally define a version block which defines meta information about this version of your api.
-
-```yaml
-version: 0.0.1
-base: /
-groups:
-  - wizards
-  - witches
----
-wizards:
-  # ...
-```
-
-#### Version Block
-
-| Field      | Info |
-| ---------- | ---- |
-| `version`  | The version number |
-| `base`     | **optional** – A base url that all endpoints will be added on to |
-| `groups`   | The groups of endpoints in this version, an array of strings |
 
 #### Group Definition
 
@@ -111,17 +88,19 @@ wizards:
 
 #### Endpoint Definition
 
+An endpoint is a specific url & http method that performs some logic in your api
+
 | Field       | Info |
 | ----------- | ---- |
 | `id`        | An identifier for the endpoint |
-| `method`    | The method to access the endpoint |
+| `method`    | The http method to access the endpoint |
 | `url`       | The url to access the endpoint, relative to the group |
 | `name`      | The name of the endpoint |
 | `info`      | **optional** – A longer description of the endpoint |
-| `responses` | **optional** – A list of ***response*** definitions |
-| `params`    | **optional** – The url parameters e.g. `/find/:id`, an ***argument*** definition |
-| `query`     | **optional** – The query parameters e.g. `?key=val`, an ***argument*** definition |
-| `body`      | **optional** – The json body parameters, an ***argument*** definition |
+| `responses` | **optional** – A list of ***response definitions*** |
+| `params`    | **optional** – The url parameters e.g. `/find/:id`, an ***argument definition*** |
+| `query`     | **optional** – The query parameters e.g. `?key=val`, an ***argument definition*** |
+| `body`      | **optional** – The json/form body parameters, an ***argument definition*** |
 
 ##### Endpoint Shorthand
 
@@ -160,6 +139,31 @@ A response definition is an array of objects which describes potential responses
 
 To look for the body it will look look in `data/` inside the version directory, joining the path onto that.
 
+## Version Meta Info
+
+You can optionally define a version block which defines meta information about this version of your api.
+
+```yaml
+version: 0.0.1
+base: /
+groups:
+  - wizards
+  - witches
+  - misc
+---
+wizards:
+  #
+  # ...
+  # 
+```
+
+#### Version Block
+
+| Field      | Info |
+| ---------- | ---- |
+| `version`  | The name of this version |
+| `base`     | **optional** – The base url for this version, all endpoints will be under this |
+| `groups`   | **optional** - The order of the endpoint groups in this version, an array of strings |
 
 ## Custom templates
 
