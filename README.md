@@ -84,7 +84,7 @@ wizards:
 | ----------- | ---- |
 | `name`      | The name of the group |
 | `base`      | **optional** – A base url for this group, relative to the version's base |
-| `endpoints` | The list of ***endpoint*** definitions |
+| `endpoints` | The list of ***endpoint definitions***  |
 
 #### Endpoint Definition
 
@@ -106,7 +106,7 @@ An endpoint is a specific url & http method that performs some logic in your api
 
 As seen at the top, you can use the endpoint shorthand which defines the method, url & id in one go. The equivalent of above would be:
 
-``` yaml
+```yaml
 endpoints:
   - get: /list index
     name: Fetch Wizards
@@ -154,7 +154,7 @@ groups:
 wizards:
   #
   # ...
-  # 
+  #
 ```
 
 #### Version Block
