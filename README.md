@@ -3,19 +3,17 @@
 Generate Api documentation using YAML
 
 ```yaml
----
 version: 0.4.2
 groups:
   - wizards
 ---
-
 wizards:
   name: Management
   endpoints:
-  - get: /wizards list
+  - get: /wizards listWizards
     info: Finds all of the wizards that are available, sorted by hat size
     
-  - post: /wizard create
+  - post: /wizard createWizard
     info: Gives birth to a new wizard setting their name & (optionally) hat size
     body:
       name: string - What to call the wizard
@@ -42,16 +40,16 @@ ocedocs --help
 npm i -D ocelot-docs
 
 # Generate documentation
-ocedocs --input api --output docs
+npx ocedocs --input api --output docs
 
 # Watch the docs (uses an express server)
-ocedocs -w
+npx ocedocs -w
 
 ```
 
 ## Writing Docs
 
-Docs are written in their own directory, which defaults to `/api`. Ocelot expects this folder to have an `info.yml` which has information about your api. Namely it can have the `name`, `template` and `description` of your api. The `template` is optional and refers to an npm package defining the api template.
+Docs are written in their own directory, which defaults to `/api`. If there isan `info.yml` Ocelot will use that to describe your api with a `name`, `template` and `description`. The `template` refers to an npm package defining the api template.
 
 ### info.yml
 
@@ -64,42 +62,44 @@ description: >
 
 ### Defining Endpoint Versions
 
-After defining that, Ocelot will look for any directories inside your input folder which contain an `endpoints.yml`.
+After that, Ocelot will look for any directories inside your input folder which contain an `endpoints.yml` file.
 
 #### endpoints.yml
 
-An endpoints file should contain 2 YAML docs, the first contains version info, details and structure of this version. The second doc contains the endpoint definitions, contained in their groups.
+An endpoints file is the description of a version of your api, the top level objects are groups of your endpoints.
 
 ```yaml
----
-version: 0.0.1
-base: /
-groups:
-  - wizards
----
 wizards:
   base: /wzrd
   name: Wizards
   endpoints:
-  - id: index
+  - get: index
     method: get
     url: /list
     name: Fetch Wizards
     info: Looks for all wizards and sorts them by hat size
----
 ```
 
-#### The Version Block
+You can optionally define a version block which defines meta information about this version of your api.
+
+```yaml
+version: 0.0.1
+base: /
+groups:
+  - wizards
+  - witches
+---
+wizards:
+  # ...
+```
+
+#### Version Block
 
 | Field      | Info |
 | ---------- | ---- |
 | `version`  | The version number |
 | `base`     | **optional** – A base url that all endpoints will be added on to |
-| `groups`   | The groups of endpoints in this version, a array of strings |
-
-#### The Groups Block
-
-The groups block should be an object containing definitions for each of the groups defined in `version.groups`.
+| `groups`   | The groups of endpoints in this version, an array of strings |
 
 #### Group Definition
 
@@ -108,7 +108,7 @@ The groups block should be an object containing definitions for each of the grou
 | `name`      | The name of the group |
 | `base`      | **optional** – A base url for this group, relative to the version's base |
 | `endpoints` | The list of ***endpoint*** definitions |
-<!--  -->
+
 #### Endpoint Definition
 
 | Field       | Info |
