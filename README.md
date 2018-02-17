@@ -27,9 +27,9 @@ Docs are rendered to `index.html` & `spec.json` in your output directory, which 
 ## Contents
 
 - Examples
-  - [Simple](examples/spec/simple)
-  - [Multi Version](examples/spec/versions)
-  - [Full](examples/spec/full)
+  - [Simple](examples/specs/simple)
+  - [Multi Version](examples/specs/versions)
+  - [Full](examples/specs/full)
 - [Using the CLI](#using-the-cli)
 - [Writing Docs](#writing-docs)
   - [Api Info](#api-info)
@@ -39,7 +39,7 @@ Docs are rendered to `index.html` & `spec.json` in your output directory, which 
     - [Argument Definition](#argument-definition)
     - [Response Definition](#response-definition)
   - [Version Info](#version-info)
-  - [Custom Templates](#custom-templates)
+- [Custom Templates](#custom-templates)
 
 ## Using the CLI
 
