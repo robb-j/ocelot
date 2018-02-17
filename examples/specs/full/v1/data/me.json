@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "success": true,
+    "messages": []
+  },
+  "data": {
+    "name": "Geoff Testington",
+    "email": "geoff@example.com",
+    "age": 42
+  }
+}

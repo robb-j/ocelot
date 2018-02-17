@@ -1,0 +1,8 @@
+version: v1
+---
+general:
+  name: My Endpoints
+  endpoints:
+  - get: / helloWorld
+    name: Hello, World!
+    info: An endpoint to let you know everything is working

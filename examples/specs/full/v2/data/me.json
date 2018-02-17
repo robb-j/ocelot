@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "success": true,
+    "messages": []
+  },
+  "data": {
+    "id": 1,
+    "createdAt": "2018-01-11T11:28:11.400Z",
+    "updatedAt": "2018-01-11T12:58:00.725Z",
+    "name": "Geoff Testington",
+    "email": "geoff@example.com",
+    "age": 42
+  }
+}

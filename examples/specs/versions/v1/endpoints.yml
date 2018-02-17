@@ -1,0 +1,10 @@
+todos:
+  name: Todos
+  base: /todos
+  endpoints:
+  - get: / index
+    info: Fetches all the todos you have access to
+  - post: / create
+    info: Creates a new todo
+    body:
+      name: string - The name of the todo

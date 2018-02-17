@@ -1,0 +1,72 @@
+version: 1.1.0
+base: /v1
+groups:
+  - auth
+  - chat
+  - misc
+---
+
+misc:
+  name: Miscellaneous
+  endpoints:
+  - get: / helloWorld
+    name: Status
+    info: An endpoint to let you know everything is working
+    responses:
+    - 200: Success hello.json
+
+auth:
+  base: /auth
+  name: Authentication
+  endpoints:
+  - post: /login login
+    name: Sign in
+    info: Trys to log in a user
+    body:
+      email: string - The email of the user
+      password: string - The password of the user
+    responses:
+    - 200: Success me.json
+    - 400: Failed fail.json
+  
+  - post: /logout logout
+    name: Sign out
+    info: Logs out the current user
+    responses:
+    - 200: Success logout.json
+    - 400: Failed fail.json
+  
+  - get: /me me
+    name: Current User
+    responses:
+    - 200: Success me.json
+
+chat:
+  base: /chats
+  name: Chats
+  endpoints:
+  - get: / list
+    name: List all Chats
+    info: Fetches all the conversations that you are a part of
+    query:
+      filter: string - A query to filter chats by
+    responses:
+    - 200: Success chats.json
+  
+  - post: / create
+    name: New Chat
+    info: Creates a new conversation
+    body:
+      name: string - What to call the new chat
+    responses:
+    - 200: Success chat.json
+  
+  - post: /:id postMessage
+    name: Send Messages
+    info: Sends a message to a conversation
+    params:
+      id: int - The id of the chat to post to
+    body:
+      message: string - The message to send
+    responses:
+    - 200: Success chat.json

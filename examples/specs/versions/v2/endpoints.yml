@@ -1,0 +1,25 @@
+lists:
+  name: Lists
+  base: /lists
+  endpoints:
+  - get: / index
+    info: Fetches all the todo lists you have access to
+  - post: / create
+    info: Creates a new todo list
+    body:
+      name: string - The name of the list
+  - post: /:id/todo addTodo
+    info: Adds a todo to a list
+    params:
+      id: int - The id of the list to add to
+    body:
+      name: string - The name of the new todo
+
+todos:
+  name: Todos
+  base: /todos
+  endpoints:
+  - get: /:id/toggle toggle
+    info: Toggles the state of a todo
+    params:
+      id: int - The id of the todo to update

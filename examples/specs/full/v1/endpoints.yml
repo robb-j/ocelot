@@ -1,0 +1,35 @@
+version: 1.0.0
+base: /v1
+groups:
+  - auth
+  - misc
+---
+
+misc:
+  name: Miscellaneous
+  endpoints:
+  - get: / helloWorld
+    info: An endpoint to let you know everything is working
+    responses:
+    - 200: Success hello.json
+  - get: /me me
+    responses:
+    - 200: Success me.json
+
+auth:
+  base: /auth
+  name: Authentication
+  endpoints:
+  - post: /login login
+    info: Trys to log in a user
+    body:
+      email: string - The email of the user
+      password: string - The password of the user
+    responses:
+    - 200: Success me.json
+    - 400: Failed fail.json
+  - post: /logout logout
+    info: Logs out the current user
+    responses:
+    - 200: Success logout.json
+    - 400: Failed fail.json
