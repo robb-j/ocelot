@@ -1,6 +1,6 @@
 {
   "name": "ocelot-docs",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Api docs generators using yaml",
   "main": "index.js",
   "scripts": {
